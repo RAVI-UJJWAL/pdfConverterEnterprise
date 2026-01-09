@@ -1,0 +1,166 @@
+/* ===== Reset & Basics ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #1e1e2f;
+    --text-color: #f5f5f5;
+    --btn-bg: #2e2e3e;
+    --btn-hover: #3a3a4e;
+    --progress-bg: #444;
+    --progress-fill: #4caf50;
+}
+
+:root[data-theme="light"] {
+    --bg-color: #f5f5f5;
+    --text-color: #1e1e2f;
+    --btn-bg: #ddd;
+    --btn-hover: #ccc;
+    --progress-bg: #ccc;
+    --progress-fill: #4caf50;
+}
+
+/* ===== Container ===== */
+.container {
+    max-width: 900px;
+    margin: 100px auto 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 0.2em;
+}
+
+.subtitle {
+    margin-top: 0;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+/* ===== Buttons ===== */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.primary-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+.secondary-btn {
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background-color: var(--btn-hover);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===== Drop Zone ===== */
+.drop-zone {
+    border: 2px dashed var(--btn-bg);
+    padding: 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.drop-zone.dragover {
+    border-color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.upload-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* ===== File List ===== */
+.file-list {
+    list-style: none;
+    padding: 0;
+}
+
+.file-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: var(--btn-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.file-item strong {
+    display: block;
+    font-size: 16px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--progress-bg);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background-color: var(--progress-fill);
+    transition: width 0.3s;
+}
+
+/* ===== Actions ===== */
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #4caf50;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin: 20px auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.message {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}

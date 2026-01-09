@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal PDF Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Top-right controls -->
+    <div class="top-controls" style="position:fixed; top:16px; right:16px; display:flex; gap:8px; z-index:1000;">
+        <button id="themeToggle" class="secondary-btn">🌙 / ☀️</button>
+        <button id="downloadAllBtn" class="secondary-btn hidden" disabled>⬇ Download All ZIP</button>
+        <button id="resetBtn" class="secondary-btn hidden">🔄 Reset</button>
+    </div>
+
+    <h1>Free PDF Converter</h1>
+    <p class="subtitle">Word, Excel, PowerPoint, Images & more</p>
+
+    <form id="uploadForm" onsubmit="return false;">
+        <div id="drop-zone" class="drop-zone">
+            <div class="icon">📄</div>
+            <label class="upload-btn">
+                Choose Files
+                <input type="file" id="fileInput" name="files" multiple hidden>
+            </label>
+            <p>or drag & drop files here</p>
+            <small>Max file size: 10MB • Multiple files supported</small>
+        </div>
+
+        <button type="button" id="convertBtn" class="primary-btn" disabled>Convert to PDF</button>
+    </form>
+
+    <ul id="fileList" class="file-list"></ul>
+
+    <div class="job-actions">
+        <button id="cancelBtn" class="secondary-btn hidden">✖ Cancel Job</button>
+    </div>
+
+    <div id="spinner" class="spinner hidden"></div>
+    <div id="message" class="message"></div>
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
