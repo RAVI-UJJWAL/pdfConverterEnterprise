@@ -233,4 +233,4 @@ def reset_all():
 
 # ================= MAIN =================
 if __name__ == "__main__":
-    app.run(port=8091, threaded=True)
+    app.run(port=9090, threaded=True)
