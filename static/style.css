@@ -1,166 +1,198 @@
-/* ===== Reset & Basics ===== */
+/* ===== Base Colors ===== */
+:root {
+    --bg: #ffffff;
+    --card: #f8f8f8;
+    --text: #1a1a1a;
+    --accent: #007bff;
+    --accent-light: #e2f0ff;
+    --success: #28a745;
+    --error: #dc3545;
+    --btn-bg: #007bff;
+    --btn-text: #fff;
+    --neutral: #6c757d;
+}
+
+[data-theme="dark"] {
+    --bg: #1f1f2e;
+    --card: #2a2a3b;
+    --text: #eef0f5;
+    --accent: #4dabf7;
+    --accent-light: #3a3f5a;
+    --btn-bg: #4dabf7;
+    --btn-text: #000;
+    --neutral: #9fa2b4;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
 }
 
-:root[data-theme="dark"] {
-    --bg-color: #1e1e2f;
-    --text-color: #f5f5f5;
-    --btn-bg: #2e2e3e;
-    --btn-hover: #3a3a4e;
-    --progress-bg: #444;
-    --progress-fill: #4caf50;
+.main-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
 }
 
-:root[data-theme="light"] {
-    --bg-color: #f5f5f5;
-    --text-color: #1e1e2f;
-    --btn-bg: #ddd;
-    --btn-hover: #ccc;
-    --progress-bg: #ccc;
-    --progress-fill: #4caf50;
+/* ===== Header ===== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
 }
 
-/* ===== Container ===== */
-.container {
-    max-width: 900px;
-    margin: 100px auto 50px;
-    padding: 20px;
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* ===== Hero / Dropzone ===== */
+.hero {
     text-align: center;
+    margin: 2rem 0;
 }
 
-h1 {
-    margin-bottom: 0.2em;
-}
-
-.subtitle {
-    margin-top: 0;
-    font-weight: 400;
-    color: var(--text-color);
-}
-
-/* ===== Buttons ===== */
-button {
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 16px;
-    font-size: 16px;
-    transition: 0.2s;
-}
-
-.primary-btn {
-    background-color: #4caf50;
-    color: white;
-}
-
-.primary-btn:hover:not(:disabled) {
-    background-color: #45a049;
-}
-
-.secondary-btn {
-    background-color: var(--btn-bg);
-    color: var(--text-color);
-}
-
-.secondary-btn:hover:not(:disabled) {
-    background-color: var(--btn-hover);
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* ===== Drop Zone ===== */
 .drop-zone {
-    border: 2px dashed var(--btn-bg);
-    padding: 40px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    transition: 0.2s;
+    background: var(--accent-light);
+    border-radius: 12px;
+    border: 2px dashed var(--accent);
+    padding: 2rem;
+    transition: transform 0.2s, background 0.2s;
 }
 
 .drop-zone.dragover {
-    border-color: #4caf50;
-    background-color: rgba(76, 175, 80, 0.1);
+    transform: scale(1.02);
+    background: var(--accent-light);
+}
+
+.upload-icon {
+    font-size: 3rem;
 }
 
 .upload-btn {
-    background-color: #4caf50;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    display: inline-block;
-    margin-bottom: 10px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0.5rem 0;
+    font-weight: 600;
 }
+
+.supported img {
+    width: 32px;
+    margin: 0 6px;
+    opacity: 0.85;
+}
+
+/* ===== Buttons ===== */
+.primary-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.primary-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.secondary-btn {
+    background: var(--card);
+    color: var(--text);
+    padding: 0.6rem 1.1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 0.3rem;
+}
+
+.secondary-btn:not(:disabled):hover {
+    background: var(--accent-light);
+}
+
+.hidden { display: none !important; }
 
 /* ===== File List ===== */
 .file-list {
     list-style: none;
     padding: 0;
+    margin-top: 1.5rem;
 }
 
 .file-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 6px;
-    background-color: var(--btn-bg);
+    background: var(--card);
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .file-item strong {
-    display: block;
-    font-size: 16px;
+    flex: 1;
 }
 
 .progress-bar {
-    width: 100%;
-    height: 10px;
-    background-color: var(--progress-bg);
-    border-radius: 5px;
+    height: 8px;
+    background: var(--neutral);
+    border-radius: 4px;
     overflow: hidden;
+    margin: 0.5rem 0;
+    flex: 1 2 50%;
 }
 
 .progress {
     height: 100%;
     width: 0%;
-    background-color: var(--progress-fill);
-    transition: width 0.3s;
+    background: var(--accent);
+    transition: width 0.3s ease;
 }
 
-/* ===== Actions ===== */
-.actions {
-    display: flex;
-    gap: 8px;
+.file-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin: 0 6px;
+    color: #fff;
 }
 
+.file-icon.word  { background: #2b579a; }
+.file-icon.excel { background: #217346; }
+.file-icon.ppt   { background: #d24726; }
+.file-icon.image { background: #6f42c1; }
+.file-icon.pdf   { background: #c92a2a; }
+
+
+/* ===== Spinner ===== */
 .spinner {
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #4caf50;
+    width: 45px;
+    height: 45px;
+    border: 6px solid var(--neutral);
+    border-top: 6px solid var(--accent);
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    margin: 20px auto;
     animation: spin 1s linear infinite;
+    margin: 2rem auto;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    to { transform: rotate(360deg); }
 }
 
 .message {
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.hidden {
-    display: none;
+    text-align: center;
+    margin-top: 1rem;
 }
