@@ -1,47 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universal PDF Converter</title>
+    <title>PDF Converter Pro — Professional</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="container">
+<div class="main-container">
 
-    <!-- Top-right controls -->
-    <div class="top-controls" style="position:fixed; top:16px; right:16px; display:flex; gap:8px; z-index:1000;">
-        <button id="themeToggle" class="secondary-btn">🌙 / ☀️</button>
-        <button id="downloadAllBtn" class="secondary-btn hidden" disabled>⬇ Download All ZIP</button>
-        <button id="resetBtn" class="secondary-btn hidden">🔄 Reset</button>
-    </div>
+    <!-- Header -->
+    <header class="header center-header">
+        <div class="logo">
+            <strong>PDF Converter Pro</strong>
+        </div>
 
-    <h1>Free PDF Converter</h1>
-    <p class="subtitle">Word, Excel, PowerPoint, Images & more</p>
+        <!-- Supported file icons (OUTSIDE card) -->
+        <div class="supported supported-top">
+            Supported:
+            <span class="file-icon word">DOC</span>
+            <span class="file-icon excel">XLS</span>
+            <span class="file-icon ppt">PPT</span>
+            <span class="file-icon image">IMG</span>
+            <span class="file-icon pdf">PDF</span>
+        </div>
 
-    <form id="uploadForm" onsubmit="return false;">
+        <!-- Controls -->
+        <div class="top-buttons">
+            <button id="themeToggle" class="secondary-btn">🌙 / ☀️</button>
+            <button id="downloadAllBtn" class="secondary-btn hidden">⬇ Download All ZIP</button>
+            <button id="resetBtn" class="secondary-btn hidden">🔄 Reset</button>
+        </div>
+    </header>
+
+    <!-- Hero / Dropzone Card -->
+    <section class="hero">
         <div id="drop-zone" class="drop-zone">
-            <div class="icon">📄</div>
+            <div class="upload-icon">📁</div>
+            <h2>Drag & Drop your files here</h2>
+            <p>or</p>
+
             <label class="upload-btn">
                 Choose Files
                 <input type="file" id="fileInput" name="files" multiple hidden>
             </label>
-            <p>or drag & drop files here</p>
-            <small>Max file size: 10MB • Multiple files supported</small>
+
+            <small><br><br>Max file size: 10MB</small>
         </div>
 
-        <button type="button" id="convertBtn" class="primary-btn" disabled>Convert to PDF</button>
-    </form>
+        <button id="convertBtn" class="primary-btn" disabled>
+            Convert to PDF
+        </button>
+    </section>
 
+    <!-- File List -->
     <ul id="fileList" class="file-list"></ul>
 
+    <!-- Job Actions -->
     <div class="job-actions">
         <button id="cancelBtn" class="secondary-btn hidden">✖ Cancel Job</button>
     </div>
 
+    <!-- Spinner & Messages -->
     <div id="spinner" class="spinner hidden"></div>
     <div id="message" class="message"></div>
+
 </div>
 
 <script src="{{ url_for('static', filename='app.js') }}"></script>
